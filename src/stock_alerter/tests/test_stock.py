@@ -11,3 +11,7 @@ class StockTest(unittest.TestCase):
         goog = Stock("GOOG")
         goog.update(datetime(2021,3,16),price=10)
         self.assertEqual(10,goog.price)
+    
+    def test_negative_price_should_throw_valueError(self):
+        goog = Stock("GOOG")
+        self.assertRaises(ValueError,goog.update,datetime(2021,3,16),-1)
