@@ -1,5 +1,5 @@
 import unittest
-import datetime
+from datetime import datetime
 from ..stock import Stock
 
 class StockTest(unittest.TestCase):

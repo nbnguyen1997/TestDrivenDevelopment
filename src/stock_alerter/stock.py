@@ -1,5 +1,3 @@
-import unittest
-
 class Stock():
     def __init__(self,symbol):
         self.symbol = symbol
@@ -10,5 +8,3 @@ class Stock():
             raise ValueError("price should not be negative")
         self.price = price
 
-if __name__ == "__main__":
-    unittest.main()
