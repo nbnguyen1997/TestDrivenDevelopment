@@ -1,5 +1,5 @@
 import unittest
-from datetime import datetime
+from datetime import date, datetime
 from ..stock import Stock
 
 class StockTest(unittest.TestCase):
@@ -15,3 +15,9 @@ class StockTest(unittest.TestCase):
     def test_negative_price_should_throw_valueError(self):
         goog = Stock("GOOG")
         self.assertRaises(ValueError,goog.update,datetime(2021,3,16),-1)
+
+    def test_stock_price_should_give_the_latest_price(self):
+        goog = Stock("GOOG")
+        goog.update(datetime(2021,3,17),price=10)
+        goog.update(datetime(2021,3,17),price=8.4)
+        self.assertAlmostEqual(8.4, goog.price,delta=0.0001)
