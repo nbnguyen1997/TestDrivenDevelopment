@@ -5,7 +5,7 @@ from ..stock import Stock
 
 class StockTest(unittest.TestCase):
     @classmethod
-    def setUpClass(self):
+    def setUp(self):
         self.goog = Stock("GOOG")
 
     def test_price_of_a_new_stock_class_should_be_None(self):
@@ -24,10 +24,14 @@ class StockTest(unittest.TestCase):
         self.goog.update(datetime(2021, 3, 17), price=8.4)
         self.assertAlmostEqual(8.4, self.goog.price, delta=0.0001)
 
+    def test_price_is_the_latest_even_if_updates_are_made_out_of_order(self):
+        self.goog.update(datetime(2014, 2, 13), price=8)
+        self.goog.update(datetime(2014, 2, 12), price=10)
+        self.assertEqual(8, self.goog.price)
 
 class StockTrendTest(unittest.TestCase):
     @classmethod
-    def setUpClass(cls):
+    def setUp(cls):
         cls.goog = Stock("GOOG")
 
     def given_a_series_of_prices(self, prices):
