@@ -20,7 +20,7 @@ class StockTest(unittest.TestCase):
                           datetime(2021, 3, 16), -1)
 
     def test_stock_price_should_give_the_latest_price(self):
-        self.goog.update(datetime(2021, 3, 17), price=10)
+        self.goog.update(datetime(2021, 3, 16), price=10)
         self.goog.update(datetime(2021, 3, 17), price=8.4)
         self.assertAlmostEqual(8.4, self.goog.price, delta=0.0001)
 
