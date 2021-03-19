@@ -42,22 +42,23 @@ class Stock:
         short_term_ma = sum([update.price for update in short_term_series])/self.SHORT_TERM_TIMESPAN
         prev_short_term_ma= sum([update.price for update in prev_short_term_series])/self.SHORT_TERM_TIMESPAN
         #   BUY signal
-        if self._is_short_term_crossover_below_to_above(perv_long_term_ma=prev_long_term_ma,prev_short_term_ma=prev_short_term_ma,long_term_ma=long_term_ma,short_term_ma=short_term_ma):
+        if self._is_crossover_below_to_above(prev_ma=prev_short_term_ma,prev_reference_ma=prev_long_term_ma,current_ma=short_term_ma,current_reference_ma=long_term_ma):
             return StockSignal.buy
         
         #   SELL signal
-        if self._is_short_term_crossover_above_to_below(perv_long_term_ma=prev_long_term_ma,prev_short_term_ma=prev_short_term_ma,long_term_ma=long_term_ma,short_term_ma=short_term_ma):
+        
+        if self._is_crossover_above_to_blow(prev_ma=prev_long_term_ma,prev_reference_ma=prev_short_term_ma,current_ma=long_term_ma,current_reference_ma=short_term_ma):
             return StockSignal.sell
         
         # NEUTRAL signal
         return StockSignal.neutral
+    def _is_crossover_below_to_above(self,prev_ma,prev_reference_ma,current_ma,current_reference_ma):
+        return prev_ma < prev_reference_ma and current_ma > current_reference_ma
+
+    def _is_crossover_above_to_blow(self,prev_ma,prev_reference_ma,current_ma,current_reference_ma):
+        return prev_ma > prev_reference_ma and current_ma < current_reference_ma
+
     
-    def _is_short_term_crossover_below_to_above(self,prev_short_term_ma,perv_long_term_ma,short_term_ma,long_term_ma):
-        return perv_long_term_ma > prev_short_term_ma and long_term_ma < short_term_ma
-
-    def _is_short_term_crossover_above_to_below(self,prev_short_term_ma,perv_long_term_ma,short_term_ma,long_term_ma):
-        return perv_long_term_ma < prev_short_term_ma and long_term_ma > short_term_ma
-
     def _get_closing_price_list(self,on_date,num_days):
         closing_price_list=[]
         for i in range(num_days):
