@@ -1,10 +1,14 @@
 import bisect
 import collections
+from enum import Enum
 from datetime import timedelta
 PriceEvent = collections.namedtuple("PriceEvent", ["timestamp", "price"])
 
 
 class Stock:
+    LONG_TERM_TIMESPAN = 10
+    SHORT_TERM_TIMESPAN = 5
+
     def __init__(self, symbol):
         self.symbol = symbol
         self.price_history = []
@@ -19,28 +23,41 @@ class Stock:
         return self.price_history[-3].price < self.price_history[-2][1] < self.price_history[-1][1]
 
     def get_crossover_signal(self, on_date):
-        closing_price_list = []
-        for i in range(11):
-            chk = on_date.date()-timedelta()
-            for price_event in reversed(self.price_history):
-                if price_event.timestamp.date() > chk:
-                    pass
-                if price_event.timestamp.date() == chk:
-                    closing_price_list.insert(0, price_event)
-                    break
-                if price_event.timestamp.date() < chk:
-                    closing_price_list.insert(0, price_event)
+
+        NUM_DAYS = self.LONG_TERM_TIMESPAN + 1
+        closing_price_list = self._get_closing_price_list(on_date= on_date,num_days= NUM_DAYS)
         # Return NEUTRAL signal
         if len(closing_price_list) < 11:
             return 0
 
         #   BUY signal
-        if sum([update.price for update in closing_price_list[-11:-1]])/10 > sum([update.price for update in closing_price_list[-6, -1]])/5 < sum([update.price for update in closing_price_list[-5:]])/5:
-            return 1
+        if sum([update.price for update in closing_price_list[-11:-1]])/10 > sum([update.price for update in closing_price_list[-6, -1]])/5 and sum([update.price for update in closing_price_list[-10:]])/10 < sum([update.price for update in closing_price_list[-5:]])/5:
+            return StockSignal.buy
 
-        #NEUTRAL signal
-        return 0
-
+        #   SELL signal
+        if sum([update.price for update in closing_price_list[-11:-1]])/10 < sum([update.price for update in closing_price_list[-6, -1]])/5 and sum([update.price for update in closing_price_list[-10:]])/10 > sum([update.price for update in closing_price_list[-5:]])/5:
+            return StockSignal.sell
+        # NEUTRAL signal
+        return StockSignal.neutral
+    def _get_closing_price_list(self,on_date,num_days):
+        closing_price_list=[]
+        for i in range(num_days):
+            chk = on_date.date() - timedelta(i)
+            for price_event in reversed(self.price_history):
+                if price_event.timestamp.date()>chk:
+                    pass
+                if price_event.timestamp.date() == chk:
+                    closing_price_list.insert(0,price_event)
+                    break
+                if price_event.timestamp.date()<chk:
+                    closing_price_list.insert(0,price_event)
+        
+        return closing_price_list
     @property
     def price(self):
         return self.price_history[-1].price if self.price_history else None
+
+class StockSignal(Enum):
+    buy = 1
+    neutral = 0
+    sell =-1
