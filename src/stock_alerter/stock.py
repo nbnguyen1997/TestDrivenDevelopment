@@ -30,12 +30,17 @@ class Stock:
         if len(closing_price_list) < 11:
             return 0
 
+        long_term_series=closing_price_list[-self.LONG_TERM_TIMESPAN:]
+        prev_long_term_series= closing_price_list[-self.LONG_TERM_TIMESPAN-1:-1]
+
+        short_term_series=closing_price_list[-self.SHORT_TERM_TIMESPAN:]
+        prev_short_term_series=closing_price_list[-self.SHORT_TERM_TIMESPAN-1:-1]
         #   BUY signal
-        if sum([update.price for update in closing_price_list[-11:-1]])/10 > sum([update.price for update in closing_price_list[-6, -1]])/5 and sum([update.price for update in closing_price_list[-10:]])/10 < sum([update.price for update in closing_price_list[-5:]])/5:
+        if sum([update.price for update in prev_long_term_series])/10 > sum([update.price for update in prev_short_term_series])/5 and sum([update.price for update in long_term_series])/10 < sum([update.price for update in short_term_series])/5:
             return StockSignal.buy
 
         #   SELL signal
-        if sum([update.price for update in closing_price_list[-11:-1]])/10 < sum([update.price for update in closing_price_list[-6, -1]])/5 and sum([update.price for update in closing_price_list[-10:]])/10 > sum([update.price for update in closing_price_list[-5:]])/5:
+        if sum([update.price for update in prev_long_term_series])/10 < sum([update.price for update in prev_short_term_series])/5 and sum([update.price for update in long_term_series])/10 > sum([update.price for update in short_term_series])/5:
             return StockSignal.sell
         # NEUTRAL signal
         return StockSignal.neutral
