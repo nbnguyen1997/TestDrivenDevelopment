@@ -5,6 +5,7 @@ from unittest import mock
 from ..alert import Alert
 from ..rule import PriceRule
 from ..stock import Stock
+from ..event import Event
 
 
 class TestAction:
