@@ -9,17 +9,18 @@ class AlertProcessor:
                          "AAPL": Stock("AAPL")}
         rule_1 = PriceRule("GOOG", lambda stock: stock.price > 10)
         rule_2 = PriceRule("AAPL", lambda stock: stock.price > 5)
-        self.exchange["GOOG"].update.connect(
-            lambda stock: print(stock.symbol, stock.price)
-            if rule_1.matches(self.exchange) else None)
-        self.exchange["AAPL"].update.connect(
-            lambda stock: print(stock.symbol, stock.price)
-            if rule_2.matches(self.exchange) else None)
+        # self.exchange["GOOG"].update.connect(
+        #     lambda stock: print(stock.symbol, stock.price)
+        #     if rule_1.matches(self.exchange) else None)
+        # self.exchange["AAPL"].update.connect(
+        #     lambda stock: print(stock.symbol, stock.price)
+        #     if rule_2.matches(self.exchange) else None)
 
         updates = []
-        with open("updates.csv", "r") as fp:
+        
+        with open(r"stock_alerter\updates.csv", "r") as fp:
             for line in fp.readline():
-                symbol, timestamp, price = line.split(",")
+                symbol, timestamp, price = line.strip().split(',')
                 updates.append((symbol, datetime.strptime(
                     timestamp, "%Y-%m-%dT%H:%m:%S.%f"), int(price)))
 
