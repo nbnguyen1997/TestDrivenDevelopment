@@ -19,5 +19,13 @@ class EmailAction:
         finally:
             smtp.quit()
 
+class MessageMatcher:
+    def __init__(self,expected) :
+        self.expected = expected
 
+    def __eq__(self, other):
+        return self.expected["Subject"] == other["Subject"] and \
+            self.expected["From"] == other["From"] and \
+            self.expected["To"] == other["To"] and \
+            self.expected["Message"] == other["Message"]
     

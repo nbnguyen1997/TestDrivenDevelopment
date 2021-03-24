@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 import unittest
 from unittest import mock
 
-from ..email_action import EmailAction
+from ..email_action import EmailAction, MessageMatcher
 
 
 @mock.patch("smtplib.SMTP")
@@ -40,4 +40,15 @@ class EmailActionTest(unittest.TestCase):
         call_args,_ = mock_smtp.send_message.call_args
         sent_message = call_args[0]
         self.assertEqual("New Stock Alert", sent_message["Subject"])
-        
+
+    def test_email_is_sent_when_action_is_execute(self,mock_smtp_class) :
+        expected_message={
+            "Subject":"New Stock Alert",
+            "Message":"MSFT has crossed $10 price level",
+            "To":"siddharta@silverstripesoftware.com",
+            "From":"alert@stocks.com"
+        }
+        mock_smtp = mock_smtp_class.return_value
+        self.action.execute("MSFT has crossed $10 price level")
+        mock_smtp.send_message(expected_message)
+        mock_smtp.send_message.assert_called_with(MessageMatcher(expected_message))
