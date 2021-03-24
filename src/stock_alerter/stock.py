@@ -2,7 +2,7 @@ import bisect
 import collections
 from enum import Enum
 from datetime import timedelta
-from stock_alerter.timeseries import MovingAverage, NotEnoughDataException, TimeSeries
+from .timeseries import MovingAverage, NotEnoughDataException, TimeSeries
 
 
 class Stock:
