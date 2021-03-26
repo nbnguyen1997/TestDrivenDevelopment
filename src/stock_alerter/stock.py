@@ -2,8 +2,9 @@ import bisect
 import collections
 from enum import Enum
 from datetime import timedelta
-# from stock_alerter.timeseries import MovingAverage, NotEnoughDataException, TimeSeries
-import timeseries
+from .event import Event
+from .timeseries import MovingAverage, NotEnoughDataException, TimeSeries
+# import timeseries
 # from .stock_alerter import 
 
 class Stock:
@@ -12,8 +13,9 @@ class Stock:
 
     def __init__(self, symbol):
         self.symbol = symbol
-        # self.history = TimeSeries()
-        self.history = timeseries.TimeSeries()
+        self.history = TimeSeries()
+        self.updated= Event()
+        # self.history = timeseries.TimeSeries()
 
     def update(self, timestamp, price):
         if price < 0:
@@ -25,17 +27,17 @@ class Stock:
         return self.history[-3].value < self.history[-2].value < self.history[-1].value
 
     def get_crossover_signal(self, on_date):
-        # long_term_ma = MovingAverage(self.history, self.LONG_TERM_TIMESPAN)
-        # short_term_ma = MovingAverage(self.history, self.SHORT_TERM_TIMESPAN)
-        long_term_ma = timeseries.MovingAverage(self.history, self.LONG_TERM_TIMESPAN)
-        short_term_ma = timeseries.MovingAverage(self.history, self.SHORT_TERM_TIMESPAN)
+        long_term_ma = MovingAverage(self.history, self.LONG_TERM_TIMESPAN)
+        short_term_ma = MovingAverage(self.history, self.SHORT_TERM_TIMESPAN)
+        # long_term_ma = timeseries.MovingAverage(self.history, self.LONG_TERM_TIMESPAN)
+        # short_term_ma = timeseries.MovingAverage(self.history, self.SHORT_TERM_TIMESPAN)
         try:
             if self._is_crossover_below_to_above(on_date, short_term_ma, long_term_ma):
                     return StockSignal.buy
 
             if self._is_crossover_below_to_above(on_date, long_term_ma, short_term_ma):
                     return StockSignal.sell
-        except timeseries.NotEnoughDataException:
+        except NotEnoughDataException:
             return StockSignal.neutral
 
         return StockSignal.neutral
