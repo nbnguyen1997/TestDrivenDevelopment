@@ -81,4 +81,4 @@ class AlertProcessor:
     def do_updates(self,updates):
         for symbol, timestamp, price in updates:
             stock = self.exchange[symbol]
-            stock.update(timestamp=timestamp, price=price)
+            stock.update(timestamp, price)
