@@ -46,14 +46,14 @@ class AlertProcessorTest(unittest.TestCase):
         processor.do_updates(updates)
         mock_goog.update.assert_called_with(datetime(2014, 12, 8), 5)
 
-    # def test_processor_characterization_5(self):
-    #     mock_goog = mock.Mock()
-    #     mock_aapl = mock.Mock()
-    #     exchange = {"GOOG": mock_goog, "AAPL": mock_aapl}
-    #     processor = TestAlertProcessor(exchange)
-    #     updates = [("GOOG", datetime(2014, 12, 8), 5)]
-    #     processor.do_updates(updates)
-    #     mock_goog.update.assert_called_with(datetime(2014, 12, 8), 5)
+    def test_processor_characterization_5(self):
+        mock_goog = mock.Mock()
+        mock_aapl = mock.Mock()
+        exchange = {"GOOG": mock_goog, "AAPL": mock_aapl}
+        processor = TestAlertProcessor(exchange)
+        updates = [("GOOG", datetime(2014, 12, 8), 5)]
+        processor.do_updates(updates)
+        mock_goog.update.assert_called_with(datetime(2014, 12, 8), 5)
 
     # def test_processor_characterization_6(self):
     #     processor = AlertProcessor(autorun=False)
