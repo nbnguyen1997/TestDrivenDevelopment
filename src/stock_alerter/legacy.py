@@ -47,11 +47,14 @@ class AlertProcessor:
     # def run(self):
     #     updates = self.reader.parse_file()
     #     self.do_updates(updates)
-    def __init__(self):
-        self.exchange = {
-            'GOOG': Stock('GOOG'),
-            'AAPL': Stock('AAPL')
-        }
+    def __init__(self,autorun=True,exchange=None):
+        if exchange == None:
+            self.exchange = {
+                'GOOG': Stock('GOOG'),
+                'AAPL': Stock('AAPL')
+            }
+        else:
+            self.exchange = exchange
         rule_1 = PriceRule('GOOG', lambda stock: stock.price > 10)
         rule_2 = PriceRule('AAPL', lambda stock: stock.price > 5)
         self.exchange['GOOG'].updated.connect(
@@ -62,9 +65,9 @@ class AlertProcessor:
             lambda stock: print(stock.symbol, stock.price)
             if rule_2.matches(self.exchange) else None
         )
+        if autorun :
+            self.run()
 
-        self.run()
-        
     def run(self):
         updates = []
         with open('updates.csv', 'r') as fp:
@@ -72,7 +75,10 @@ class AlertProcessor:
                 symbol, timestamp, price = line.split(',')
                 updates.append((symbol, datetime.strptime(
                     timestamp, '%Y-%m-%dT%H:%M:%S.%f'), int(price)))
+        
+        self.do_updates(updates=updates)
 
+    def do_updates(self,updates):
         for symbol, timestamp, price in updates:
             stock = self.exchange[symbol]
             stock.update(timestamp=timestamp, price=price)
