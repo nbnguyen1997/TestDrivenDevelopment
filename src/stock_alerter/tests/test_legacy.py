@@ -55,18 +55,27 @@ class AlertProcessorTest(unittest.TestCase):
         processor.do_updates(updates)
         mock_goog.update.assert_called_with(datetime(2014, 12, 8), 5)
 
-    # def test_processor_characterization_6(self):
-    #     processor = AlertProcessor(autorun=False)
-    #     processor.do_updates = mock.Mock()
-    #     processor.run()
-    #     processor.do_updates.assert_called_with([
-    #         ('GOOG', datetime(2014, 2, 11, 14, 10, 22, 130000), 5),
-    #         ('AAPL', datetime(2014, 2, 11, 0, 0), 8),
-    #         ('GOOG', datetime(2014, 2, 11, 14, 11, 22, 130000), 3),
-    #         ('GOOG', datetime(2014, 2, 11, 14, 12, 22, 130000), 15),
-    #         ('AAPL', datetime(2014, 2, 11, 0, 0), 10),
-    #         ('GOOG', datetime(2014, 2, 11, 14, 15, 22, 130000), 21)])
+    def test_processor_characterization_6(self):
+        processor = AlertProcessor(autorun=False)
+        processor.do_updates = mock.Mock()
+        processor.run()
+        processor.do_updates.assert_called_with([
+            ('GOOG', datetime(2014, 2, 11, 14, 10, 22, 130000), 5),
+            ('AAPL', datetime(2014, 2, 11, 0, 0), 8),
+            ('GOOG', datetime(2014, 2, 11, 14, 11, 22, 130000), 3),
+            ('GOOG', datetime(2014, 2, 11, 14, 12, 22, 130000), 15),
+            ('AAPL', datetime(2014, 2, 11, 0, 0), 10),
+            ('GOOG', datetime(2014, 2, 11, 14, 15, 22, 130000), 21)])
 
+    def test_processor_characterization_7(self):
+        processor = AlertProcessor(autorun=False)
+        processor.parse_file = mock.Mock()
+        processor.parse_file.return_value=[
+            ('GOOG',datetime(2014,2,11,14,12,22,130000),15)
+        ]
+        with mock.patch('builtins.print') as mock_print:
+            processor.run()
+        mock_print.assert_called_with('GOOG',15)
     # def test_processor_characterization_7(self):
     #     mock_reader = mock.MagicMock()
     #     mock_reader.parse_file.return_value = [
@@ -75,6 +84,17 @@ class AlertProcessorTest(unittest.TestCase):
     #     with mock.patch("builtins.print") as mock_print:
     #         processor.run()
     #     mock_print.assert_called_with("GOOG", 15)
+
+    def test_processor_characterization_8(self):
+        processor = AlertProcessor(autorun=False)
+        processor.parse_file = mock.Mock()
+        processor.parse_file.return_value=[
+            ('GOOG',datetime(2014,2,11,14,10,22,130000),5)
+        ]
+        with mock.patch('builtins.print') as mock_print:
+            processor.run()
+        
+        self.assertFalse(mock_print.called)
 
     # def test_processor_characterization_8(self):
     #     mock_reader = mock.MagicMock()
@@ -85,12 +105,12 @@ class AlertProcessorTest(unittest.TestCase):
     #         processor.run()
     #     self.assertFalse(mock_print.called)
 
-    # def test_processor_characterization_9(self):
-    #     processor = AlertProcessor(autorun=False)
-    #     processor.print_action = mock.Mock()
-    #     processor.do_updates([
-    #         ('GOOG', datetime(2014, 2, 11, 14, 12, 22, 130000), 15)])
-    #     self.assertTrue(processor.print_action.called)
+    def test_processor_characterization_9(self):
+        processor = AlertProcessor(autorun=False)
+        processor.print_action = mock.Mock()
+        processor.do_updates([
+            ('GOOG', datetime(2014, 2, 11, 14, 12, 22, 130000), 15)])
+        self.assertTrue(processor.print_action.called)
 
     # def test_processor_gets_values_from_reader(self):
     #     mock_reader = mock.MagicMock()
