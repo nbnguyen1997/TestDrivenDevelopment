@@ -25,7 +25,10 @@ class Stock:
         
         >>> from datetime import datetime
         >>> stock = Stock("GOOG")
+        >>> print(stock.price)
+        None
         >>> stock.update(datetime(2011,10,3),10)
+        >>> stock.update(datetime(2011,10,2),5)
         >>> stock.price
         10
         """
