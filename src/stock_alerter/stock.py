@@ -63,7 +63,6 @@ class Stock:
         
         Return False if there have been less than three updates so fra
         
-        >>> stock = Stock("GOOG")
         >>> stock.is_increasing_trend()
         False
         """
