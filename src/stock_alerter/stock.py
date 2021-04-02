@@ -44,8 +44,18 @@ class Stock:
         self.updated.fire(self)
 
     def is_increasing_trend(self):
-        return self.history[-3].value < self.history[-2].value < self.history[-1].value
-
+        """Return True if the past three values have been strictly increasing
+        
+        Return False if there have been less than three updates so fra
+        
+        >>> stock = Stock("GOOG")
+        >>> stock.is_increasing_trend()
+        False
+        """
+        try:
+            return self.history[-3].value < self.history[-2].value < self.history[-1].value
+        except IndexError:
+            return False
     def _is_crossover_below_to_above(self, on_date, ma, reference_ma):
         prev_date = on_date - timedelta(1)
         return (ma.value_on(prev_date) < reference_ma.value_on(prev_date)
