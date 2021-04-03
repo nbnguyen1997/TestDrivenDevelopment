@@ -9,8 +9,9 @@ class StockTest(unittest.TestCase):
     def setUp(self):
         self.goog = Stock("GOOG")
 
-    def test_price_of_a_new_stock_class_should_be_None(self):
-        self.assertIsNone(self.goog.price)
+    def test_price_of_a_new_stock_class_should_be_None():
+        goog = Stock("GOOG")
+        assert goog.price is None
 
     def test_stock_update(self):
         self.goog.update(datetime(2021, 3, 16), price=10)
@@ -37,8 +38,10 @@ class StockTrendTest(unittest.TestCase):
         cls.goog = Stock("GOOG")
 
     def given_a_series_of_prices(self, prices):
-        timestamps = [datetime(2014, 2, 10), datetime(2014, 2,
-                                                      11), datetime(2014, 2, 12), datetime(2014, 2, 13)]
+        timestamps = [datetime(2014, 2, 10), 
+                      datetime(2014, 2,11), 
+                      datetime(2014, 2, 12), 
+                      datetime(2014, 2, 13)]
         for timestamp, price in zip(timestamps, prices):
             self.goog.update(timestamp, price)
 
