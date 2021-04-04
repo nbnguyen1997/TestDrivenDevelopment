@@ -1,0 +1,194 @@
+<testsuite name="nose2-junit" errors="3" failures="0" skipped="0" tests="57" time="0.047">
+  <testcase time="0.001001" classname="stock_alerter.tests.test_action.PrintActionTest" name="test_executing_action_prints_message">
+    <system-out />
+  </testcase>
+  <testcase time="0.001002" classname="stock_alerter.stock.Stock" name="is_increasing_trend">
+    <system-out />
+  </testcase>
+  <testcase time="0.000999" classname="stock_alerter.stock.Stock" name="price">
+    <system-out />
+  </testcase>
+  <testcase time="0.002999" classname="stock_alerter.stock.Stock" name="update">
+    <system-out />
+  </testcase>
+  <testcase time="0.003003" classname="doctest" name="readme_txt">
+    <system-out />
+  </testcase>
+  <testcase time="0.002003" classname="stock_alerter.tests.test_email_action.EmailActionTest" name="test_connection_closed_after_sending_mail">
+    <system-out />
+  </testcase>
+  <testcase time="0.001000" classname="stock_alerter.tests.test_email_action.EmailActionTest" name="test_connection_closed_if_send_gives_error">
+    <system-out />
+  </testcase>
+  <testcase time="0.002002" classname="stock_alerter.tests.test_email_action.EmailActionTest" name="test_email_is_send_to_the_right_ser">
+    <system-out />
+  </testcase>
+  <testcase time="0.003001" classname="stock_alerter.tests.test_email_action.EmailActionTest" name="test_email_is_sent_when_action_is_execute">
+    <system-out />
+  </testcase>
+  <testcase time="0.003003" classname="stock_alerter.tests.test_email_action.EmailActionTest" name="test_email_is_sent_with_the_right_subject">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_event.EventTest" name="test_a_listener_is_notified_when_an_event_is_raised">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_event.EventTest" name="test_a_listener_is_passed_right_parameters">
+    <system-out />
+  </testcase>
+  <testcase time="0.006004" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_characterization_1">
+    <system-out />
+  </testcase>
+  <testcase time="0.002000" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_characterization_2">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_characterization_3">
+    <system-out />
+  </testcase>
+  <testcase time="0.002003" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_characterization_4">
+    <system-out />
+  </testcase>
+  <testcase time="0.000999" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_characterization_5">
+    <system-out />
+  </testcase>
+  <testcase time="0.001000" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_characterization_6">
+    <system-out />
+  </testcase>
+  <testcase time="0.001001" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_characterization_7">
+    <system-out />
+  </testcase>
+  <testcase time="0.001002" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_characterization_8">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_characterization_9">
+    <system-out />
+  </testcase>
+  <testcase time="0.001000" classname="stock_alerter.tests.test_legacy.AlertProcessorTest" name="test_processor_gets_values_from_reader">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_rule.AndRuleTest" name="test_an_AndRule_matches_if_all_component_rules_are_true">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_rule.PriceRuleTest" name="test_a_PriceRule_is_False_if_the_condition_is_not_met">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_rule.PriceRuleTest" name="test_a_PriceRule_is_False_if_the_stock_hasnt_got_an_update_yet">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_rule.PriceRuleTest" name="test_a_PriceRule_is_False_if_the_stock_is_not_in_the_exchange">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_rule.PriceRuleTest" name="test_a_PriceRule_matches_when_it_meets_the_condition">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_rule.PriceRuleTest" name="test_a_PriceRule_only_depends_on_its_stock">
+    <system-out />
+  </testcase>
+  <testcase time="0.001002" classname="stock_alerter.tests.test_stock" name="test_price_of_a_new_stock_class_should_be_None">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock" name="test_stock_trends:1">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock" name="test_stock_trends:2">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock" name="test_stock_trends:3">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.having a price method" name="test 0000: should return the price">
+    <error message="test failure">Traceback (most recent call last):
+  File "D:\Python\TestDrivenDevelopment\src\stock_alerter\tests\test_stock.py", line 66, in test
+    assert it.goog.price ==10
+  File "c:\users\admin\appdata\local\programs\python\python39\lib\site-packages\nose2\tools\such.py", line 201, in __getattr__
+    return getattr(self._helper, attr)
+AttributeError: 'Helper' object has no attribute 'goog'
+</error>
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.having a price method" name="test 0001: should return the latest price">
+    <error message="test failure">Traceback (most recent call last):
+  File "D:\Python\TestDrivenDevelopment\src\stock_alerter\tests\test_stock.py", line 70, in test
+    it.goog.update(datetime(2014,2,11),price=15)
+  File "c:\users\admin\appdata\local\programs\python\python39\lib\site-packages\nose2\tools\such.py", line 201, in __getattr__
+    return getattr(self._helper, attr)
+AttributeError: 'Helper' object has no attribute 'goog'
+</error>
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.having a trend mathod" name="test 0000: should return True if last three updates were increasing">
+    <error message="test failure">Traceback (most recent call last):
+  File "D:\Python\TestDrivenDevelopment\src\stock_alerter\tests\test_stock.py", line 76, in test
+    it.goog.update(datetime(2014,2,11),price=12)
+  File "c:\users\admin\appdata\local\programs\python\python39\lib\site-packages\nose2\tools\such.py", line 201, in __getattr__
+    return getattr(self._helper, attr)
+AttributeError: 'Helper' object has no attribute 'goog'
+</error>
+    <system-out />
+  </testcase>
+  <testcase time="0.001002" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_date_to_check_can_be_beyond_last_update_date">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_generate_timestamp_handles_multiple_updates_per_date">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_generate_timestamp_returns_consecutive_dates">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_generate_timestamp_skips_empty_dates">
+    <system-out />
+  </testcase>
+  <testcase time="0.001001" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_should_be_neutral_if_not_enough_days_of_data">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_should_have_11_days_worth_of_data">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_should_only_look_at_closing_price">
+    <system-out />
+  </testcase>
+  <testcase time="0.000999" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_should_pick_up_previous_closing_if_no_updates_for_a_day">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_stock_with_less_data_returns_neutral">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_stock_with_no_crossover_returns_neutral">
+    <system-out />
+  </testcase>
+  <testcase time="0.001001" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_stock_with_no_data_returns_neutral">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_with_downward_crossover_returns_sell">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockCrossOverSignalTest" name="test_with_upward_crossover_returns_buy">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockTest" name="test_negative_price_should_throw_valueError">
+    <system-out />
+  </testcase>
+  <testcase time="0.001000" classname="stock_alerter.tests.test_stock.StockTest" name="test_price_is_the_latest_even_if_updates_are_made_out_of_order">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockTest" name="test_price_of_a_new_stock_class_should_be_None">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockTest" name="test_stock_price_should_give_the_latest_price">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockTest" name="test_stock_update">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockTrendTest" name="test_increasing_trend_is_false_if_price_decreases">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_stock.StockTrendTest" name="test_increasing_trend_is_false_if_price_equal">
+    <system-out />
+  </testcase>
+  <testcase time="0.001001" classname="stock_alerter.tests.test_stock.StockTrendTest" name="test_increasing_trend_is_true_if_price_increase_for_3_updates">
+    <system-out />
+  </testcase>
+  <testcase time="0.000000" classname="stock_alerter.tests.test_timeseries.TimeSeriesEqualityTest" name="test_timeseries_price_history">
+    <system-out />
+  </testcase>
+</testsuite>

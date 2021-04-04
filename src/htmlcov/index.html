@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="icon" sizes="32x32" href="favicon_32.png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">95%</span>
+        </h1>
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+<div id="index">
+    <table class="index">
+        <thead>
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>589</td>
+                <td>31</td>
+                <td>0</td>
+                <td class="right" data-ratio="558 589">95%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter___init___py.html">stock_alerter\__init__.py</a></td>
+                <td>3</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="1 3">33%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_action_py.html">stock_alerter\action.py</a></td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="3 3">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_alert_py.html">stock_alerter\alert.py</a></td>
+                <td>13</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="13 13">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_email_action_py.html">stock_alerter\email_action.py</a></td>
+                <td>20</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="20 20">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_event_py.html">stock_alerter\event.py</a></td>
+                <td>8</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="8 8">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_legacy_py.html">stock_alerter\legacy.py</a></td>
+                <td>35</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="35 35">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_processor_py.html">stock_alerter\processor.py</a></td>
+                <td>8</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="8 8">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_reader_py.html">stock_alerter\reader.py</a></td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="7 7">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_rule_py.html">stock_alerter\rule.py</a></td>
+                <td>22</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="right" data-ratio="18 22">82%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_stock_py.html">stock_alerter\stock.py</a></td>
+                <td>48</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="46 48">96%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests___init___py.html">stock_alerter\tests\__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests_test_action_py.html">stock_alerter\tests\test_action.py</a></td>
+                <td>9</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="9 9">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests_test_alert_py.html">stock_alerter\tests\test_alert.py</a></td>
+                <td>25</td>
+                <td>13</td>
+                <td>0</td>
+                <td class="right" data-ratio="12 25">48%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests_test_doctest_py.html">stock_alerter\tests\test_doctest.py</a></td>
+                <td>11</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="11 11">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests_test_email_action_py.html">stock_alerter\tests\test_email_action.py</a></td>
+                <td>38</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="38 38">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests_test_event_py.html">stock_alerter\tests\test_event.py</a></td>
+                <td>16</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="16 16">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests_test_legacy_py.html">stock_alerter\tests\test_legacy.py</a></td>
+                <td>72</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="72 72">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests_test_rule_py.html">stock_alerter\tests\test_rule.py</a></td>
+                <td>43</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="43 43">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests_test_stock_py.html">stock_alerter\tests\test_stock.py</a></td>
+                <td>157</td>
+                <td>9</td>
+                <td>0</td>
+                <td class="right" data-ratio="148 157">94%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_tests_test_timeseries_py.html">stock_alerter\tests\test_timeseries.py</a></td>
+                <td>15</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="right" data-ratio="14 15">93%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="stock_alerter_timeseries_py.html">stock_alerter\timeseries.py</a></td>
+                <td>36</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="36 36">100%</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.5</a>,
+            created at 2021-04-04 18:16 +0700
+        </p>
+    </div>
+</div>
+</body>
+</html>
