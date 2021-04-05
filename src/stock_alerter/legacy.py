@@ -6,20 +6,31 @@ from .rule import PriceRule
 
 
 class FileReader:
+    """Reads a series of stock updates from a file"""
     def __init__(self, filename):
         self.filename = filename
 
     def get_updates(self):
+        """Returns the next update everytime the method is called"""
         updates = []
         with open(self.filename, "r") as fp:
             for line in fp.readlines():
-                symbol, timestamp, price = line.split(",")
-                updates.append((symbol,
-                                datetime.strptime(
-                                    timestamp, "%Y-%m-%dT%H:%M:%S.%f"),
-                                int(price)))
+                symbol, time, price = line.split(",")
+                # updates.append((symbol,
+                #                 datetime.strptime(
+                #                     timestamp, "%Y-%m-%dT%H:%M:%S.%f"),
+                #                 int(price)))
+                yield (symbol,datetime.strptime(time,"%Y-%m-%dT%H:%M:%S.%f"),int(price))
+        # return updates
+    
+    def parse_file(self):
+        updates = []
+        with open('updates.csv', 'r') as fp:
+            for line in fp.readlines():
+                symbol, timestamp, price = line.split(',')
+                updates.append((symbol, datetime.strptime(
+                    timestamp, '%Y-%m-%dT%H:%M:%S.%f'), int(price)))
         return updates
-
 
 class AlertProcessor:
     def __init__(self,autorun=True,reader = None,exchange=None):
@@ -43,17 +54,9 @@ class AlertProcessor:
             self.run()
 
     def run(self):
-        updates = self.reader.get_updates()
+        updates = self.reader.parse_file()
         self.do_updates(updates)
 
-    # def parse_file(self):
-    #     updates = []
-    #     with open('updates.csv', 'r') as fp:
-    #         for line in fp.readlines():
-    #             symbol, timestamp, price = line.split(',')
-    #             updates.append((symbol, datetime.strptime(
-    #                 timestamp, '%Y-%m-%dT%H:%M:%S.%f'), int(price)))
-    #     return updates
 
     def print_action(self,stock,rule):
         print(stock.symbol,stock.price) \

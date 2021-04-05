@@ -2,13 +2,25 @@ import unittest
 from unittest import mock
 from datetime import datetime
 
-from ..legacy import AlertProcessor
+from ..legacy import AlertProcessor, FileReader
 
 
 class TestAlertProcessor(AlertProcessor):
     def __init__(self, exchange):
         AlertProcessor.__init__(self, autorun=False)
         self.exchange = exchange
+
+
+class FileReaderTest(unittest.TestCase):
+    @mock.patch("builtins.open", mock.mock_open(read_data="""GOOG,2014-02-11T14:10:22.13,10"""))
+    def test_FileReader_return_the_file_contents(self):
+        reader = FileReader("stock.txt")
+        updater = reader.get_updates()
+        update = next(updater)
+        self.assertEqual(
+            ("GOOG",
+             datetime(2014, 2, 11, 14, 10, 22, 130000),
+             10), update)
 
 
 class AlertProcessorTest(unittest.TestCase):
@@ -70,12 +82,14 @@ class AlertProcessorTest(unittest.TestCase):
     def test_processor_characterization_7(self):
         processor = AlertProcessor(autorun=False)
         processor.reader = mock.Mock()
-        processor.reader.get_updates.return_value=[
-            ('GOOG',datetime(2014,2,11,14,12,22,130000),15)
+        processor.reader.parse_file.return_value = [
+            # processor.reader.get_updates.return_value=[
+
+            ('GOOG', datetime(2014, 2, 11, 14, 12, 22, 130000), 15)
         ]
         with mock.patch('builtins.print') as mock_print:
             processor.run()
-        mock_print.assert_called_with('GOOG',15)
+        mock_print.assert_called_with('GOOG', 15)
     # def test_processor_characterization_7(self):
     #     mock_reader = mock.MagicMock()
     #     mock_reader.parse_file.return_value = [
@@ -88,12 +102,14 @@ class AlertProcessorTest(unittest.TestCase):
     def test_processor_characterization_8(self):
         processor = AlertProcessor(autorun=False)
         processor.reader = mock.Mock()
-        processor.reader.get_updates.return_value=[
-            ('GOOG',datetime(2014,2,11,14,10,22,130000),5)
+
+        processor.reader.parse_file.return_value = [
+            # processor.reader.get_updates.return_value=[
+            ('GOOG', datetime(2014, 2, 11, 14, 10, 22, 130000), 5)
         ]
         with mock.patch('builtins.print') as mock_print:
             processor.run()
-        
+
         self.assertFalse(mock_print.called)
 
     # def test_processor_characterization_8(self):
@@ -114,7 +130,8 @@ class AlertProcessorTest(unittest.TestCase):
 
     def test_processor_gets_values_from_reader(self):
         mock_reader = mock.MagicMock()
-        mock_reader.get_updates.return_value = \
+        # mock_reader.get_updates.return_value = \
+        mock_reader.parse_file.return_value = \
             [('GOOG', datetime(2014, 2, 11, 14, 12, 22, 130000), 15)]
         processor = AlertProcessor(autorun=False, reader=mock_reader)
         processor.print_action = mock.Mock()
