@@ -79,6 +79,15 @@ with such.A("Stock class") as it:
             assert it.goog.is_increasing_trend()
             
     it.createTests(globals())
+    
+def suite():
+    loader = unittest.TestLoader()
+    test_suite = unittest.TestSuite()
+    test_suite.addTest(
+        loader.loadTestsFromTestCase(StockCrossOverSignalTest)
+    )
+    return test_suite
+
 class StockTest(unittest.TestCase):
     @classmethod
     def setUp(self):

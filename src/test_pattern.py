@@ -1,13 +1,10 @@
 import unittest
-from stock_alerter.tests.test_stock import StockCrossOverSignalTest
-def suite():
-    loader = unittest.TestLoader()
-    test_suite = unittest.TestSuite()
-    test_suite.addTest(
-        loader.loadTestsFromTestCase(StockCrossOverSignalTest)
-    )
-    return test_suite
+from stock_alerter.tests import test_stock
+from stock_alerter.tests.test_stock import StockCrossOverSignalTest,StockTest, test
 
 
 if __name__== "__main__":
-    suite()
+    runner = unittest.TextTestRunner()
+    
+    runner.run(test_stock.suite())
+    
