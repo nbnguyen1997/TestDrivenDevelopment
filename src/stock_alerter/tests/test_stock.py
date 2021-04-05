@@ -51,35 +51,35 @@ def stock_trend_with_consecutive_prices(prices):
     given_a_series_of_prices(goog,prices)
     assert goog.is_increasing_trend()
 
-with such.A("Stock class") as it:
+# with such.A("Stock class") as it:
     
-    @it.has_setup
-    def setup():
-        it.goog = Stock("GOOG")
+#     @it.has_setup
+#     def setup():
+#         it.goog = Stock("GOOG")
     
-    with it.having("a price method"):
-        @it.has_setup
-        def setup():
-            it.goog.update(datetime(2014,2,12),price=10)
+#     with it.having("a price method"):
+#         @it.has_setup
+#         def setup():
+#             it.goog.update(datetime(2014,2,12),price=10)
         
-        @it.should("return the price")
-        def test(case):
-            assert it.goog.price ==10
+#         @it.should("return the price")
+#         def test(case):
+#             assert it.goog.price ==10
             
-        @it.should("return the latest price")
-        def test(case):
-            it.goog.update(datetime(2014,2,11),price=15)
-            assert it.goog.price == 10
+#         @it.should("return the latest price")
+#         def test(case):
+#             it.goog.update(datetime(2014,2,11),price=15)
+#             assert it.goog.price == 10
             
-    with it.having("a trend mathod"):
-        @it.should("return True if last three updates were increasing")
-        def test(case):
-            it.goog.update(datetime(2014,2,11),price=12)
-            it.goog.update(datetime(2014,2,12),price=13)
-            it.goog.update(datetime(2014,2,13),price=14)
-            assert it.goog.is_increasing_trend()
+#     with it.having("a trend mathod"):
+#         @it.should("return True if last three updates were increasing")
+#         def test(case):
+#             it.goog.update(datetime(2014,2,11),price=12)
+#             it.goog.update(datetime(2014,2,12),price=13)
+#             it.goog.update(datetime(2014,2,13),price=14)
+#             assert it.goog.is_increasing_trend()
             
-    it.createTests(globals())
+#     it.createTests(globals())
     
 def suite():
     loader = unittest.TestLoader()

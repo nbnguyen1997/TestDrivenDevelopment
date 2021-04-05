@@ -15,10 +15,12 @@ class TestAction:
         self.executed = True
 
 class AlertTest(unittest.TestCase):
-    def tets_action_is_executed_when_rule_matches(self):
+    @unittest.expectedFailure
+    def test_action_is_executed_when_rule_matches(self):
         goog = mock.MagicMock(spec=Stock)
         goog.updated = Event()
-        goog.update.side_effect = lambda date,value: goog.updated.fire(self)
+        goog.update.side_effect = \
+            lambda date,value: goog.updated.fire(self)
         exchange = {"GOOG": goog}
         rule = mock.MagicMock(spec=PriceRule)
         rule.matches.return_value = True
@@ -27,4 +29,4 @@ class AlertTest(unittest.TestCase):
         alert = Alert("sample alert",rule,action)
         alert.connect(exchange)
         exchange["GOOG"].update(datetime(2014,2,10),11)
-        action.excute.assert_called_with("sample alert")
+        action.excute.assert_called_with("sample alerts")
