@@ -1,5 +1,6 @@
 import unittest
 import collections
+import sys
 from datetime import datetime, timedelta
 
 from nose2.tools.params import params
@@ -95,20 +96,24 @@ class StockTest(unittest.TestCase):
 
     def test_price_of_a_new_stock_class_should_be_None(self):
         self.assertIsNone(self.goog.price)
-
+    # @unittest.skip("skip this test for now")
     def test_stock_update(self):
         self.goog.update(datetime(2021, 3, 16), price=10)
         self.assertEqual(10, self.goog.price)
 
+    test_stock_update.slow = True
+    test_stock_update.integration = True
+    test_stock_update.python =["2.6","3.9"]
+    
     def test_negative_price_should_throw_valueError(self):
         self.assertRaises(ValueError, self.goog.update,
                           datetime(2021, 3, 16), -1)
-
+    @unittest.skipIf(sys.platform.startswith("win"),"ship on windows")
     def test_stock_price_should_give_the_latest_price(self):
         self.goog.update(datetime(2021, 3, 16), price=10)
         self.goog.update(datetime(2021, 3, 17), price=8.4)
         self.assertAlmostEqual(8.4, self.goog.price, delta=0.0001)
-
+    @unittest.skipUnless(sys.platform.startswith("win"),"only run on windows")
     def test_price_is_the_latest_even_if_updates_are_made_out_of_order(self):
         self.goog.update(datetime(2014, 2, 13), price=8)
         self.goog.update(datetime(2014, 2, 12), price=10)
