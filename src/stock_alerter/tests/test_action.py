@@ -29,12 +29,16 @@ class PrintActionTest(unittest.TestCase):
     def test_action_fires_when_rule_matches(self):
         goog = Stock("GOOG")
         exchange = {"GOOG": goog}
-        rule = mock.MagicMock()
+        main_mock = mock.MagicMock()
+        rule = main_mock.rule
         rule.matches.return_value = True
         rule.depends_on.return_value = {"GOOG"}
-        action = mock.MagicMock()
+        action = main_mock.action
         alert = Alert("sample alert", rule, action)
         alert.connect(exchange)
         goog.update(datetime(2014, 5, 14), 11)
-        rule.matches.assert_called_with(exchange)
-        self.assertTrue(action.execute.called)
+        main_mock.assert_has_calls(
+            [mock.call.rule.matches(exchange),
+             mock.call.action.execute("sample alert")]
+            
+        )
